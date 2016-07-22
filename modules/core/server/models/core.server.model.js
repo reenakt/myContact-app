@@ -24,7 +24,7 @@ var ContactsSchema = new Schema({
         type:String,
         default:'',
         trim:true,
-        validate:[validateEmailStrategy,'Email cannot be empty']
+        validate:[validateFieldStrategy,'last name cannot be empty']
     },
     email:{
         type:String,
@@ -35,4 +35,4 @@ var ContactsSchema = new Schema({
         validate:[validateEmailStrategy,'please give the correct email']
     }
 });
-  mongoose.model('contact',ContactsSchema);
+  mongoose.model('rkcontacts',ContactsSchema);

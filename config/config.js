@@ -11,8 +11,7 @@ var initGlobalConfig = function(){
     };
 
     var defaultConfig = require('./env/default'),
-    
-    environment = process.env.NODE_ENV;
+        environment = process.env.NODE_ENV;
 var envConfig =_.extend(defaultConfig,require('./env/'+(environment||'devlopment')));
 
     config = _.extend(defaultConfig,envConfig); // multiple inheritance

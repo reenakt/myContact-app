@@ -21,7 +21,7 @@ module.exports.findContactById = function(id){
     var foundContact;
     contacts.some(function(contact,index){
         if(contact.id===id){
-            foundContact = {}
+            foundContact = {};
             foundContact.contact=contact;
             foundContact.index =index;
             return foundContact;

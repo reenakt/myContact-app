@@ -2,7 +2,7 @@
 'use strict';
 module.exports = {
     db :{
-        uri: 'mongodb://localhost',
+        uri: 'mongodb://localhost/contacts-app',
         options:{
             user:'',
             pass:''

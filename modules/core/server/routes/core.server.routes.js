@@ -16,9 +16,8 @@ module.exports = function(app){
     app
         .route('/api/contact/:contactId')
         .put(controller.updateContact)
+        .delete(controller.deleteContact)
         
-        .delete(controller.deleteContact);
-    
     
     app.param('contactId',controller.validateContactIdAndForward);
 }
