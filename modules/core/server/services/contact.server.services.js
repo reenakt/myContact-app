@@ -40,15 +40,7 @@ module.exports.findContactById = function (id,callback) {
 }
 module.exports.updateContact = function(id,updatedContact,callback){
 
-    Contact.findByIdAndUpdate(id,{
-
-        firstName:updatedContact.firstName,
-        lastName:updatedContact.lastName,
-        email:updatedContact.email,
-        phone:updatedContact.phone,
-        _id:id
-
-    },function(err,contact){
+    Contact.findByIdAndUpdate(id,updatedContact,function(err,contact){
         if(err) {
             callback (err);
         }
