@@ -93,3 +93,61 @@ module.exports.deleteContact = function(req,res) {
          }
      });
 }
+//query operation
+
+module.exports.getTopContacts = function(req,res){
+    
+    contactService.getTopContacts(function (err,foundContact) {
+        if(err){
+            res.status(400)
+                .send({message:"Error: unable to find contact"})
+        }else{
+            res.status(200)
+                .json(foundContact);
+        }
+    });
+}
+module.exports.findContactByCity = function(req,res){
+    var city = req.params.city;
+    contactService.findContactByCity(city,function(err,foundContact){
+        if(err){
+            res.status(400)
+                .send({message:"Error: unable to find contact"})
+        }else{
+            res.status(200)
+                .json(foundContact);
+        }
+    });
+}
+module.exports.getContactByNum = function(req,res){
+    var num= req.params.num;
+    contactService.getContactByNum(num,function(err,foundContact){
+
+        if(err){
+            res.status(400)
+                .send({message:"Error: Unable to find number"})
+        }else{
+            res.status(200)
+                .json(foundContact);
+        }
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

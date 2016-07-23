@@ -20,5 +20,20 @@ module.exports = function(app){
         
     
     app.param('contactId',controller.validateContactIdAndForward);
+    
+    
+    // to query
+
+    app
+        .route('/api/topcontacts')
+        .get(controller.getTopContacts)
+    app
+        .route('/api/city/:city')
+        .get(controller.findContactByCity)
+    app
+        .route('/api/areacode/:num')
+        .get(controller.getContactByNum)
+            
+
 }
     

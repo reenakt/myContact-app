@@ -1,0 +1,25 @@
+{
+  "name": "contact-app",
+  "version": "1.0.0",
+  "description": "Contact Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "contacts"
+  ],
+  "author": "Reena",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.5.4",
+    "validator": "^5.4.0"
+  },
+  "devDependencies": {
+    "chance": "^1.0.3"
+  }
+}
