@@ -2,7 +2,11 @@
 
 module.exports = function(app){
 
-    var controller = require('../controllers/core.server.controller')
+    var controller = require('../controllers/core.server.controller'),
+        mainController=require('../controllers/main.server.controller'),
+
+        userController = require('../controllers/user.server.controller'),
+           passport = require('passport');
 
 
 
@@ -17,6 +21,7 @@ module.exports = function(app){
         .route('/api/contact/:contactId')
         .put(controller.updateContact)
         .delete(controller.deleteContact)
+        .get(controller.getContactById)
         
     
     app.param('contactId',controller.validateContactIdAndForward);
@@ -35,5 +40,26 @@ module.exports = function(app){
         .get(controller.getContactByNum)
             
 
-}
+    app
+        .route('/')
+        .get(mainController.index);
+
+    // authentication
+
+    app
+        .route('/api/register')
+        .post(userController.createUser);
+
+    app
+        .route('/api/login')
+        .post(userController.findUser)
+        .post(passport.authenticate('local',{
+            successRedirect:'/',
+            failureRedirect:'/api/login',
+            failureFlash:true
+
+        }))
+
+
+};
     

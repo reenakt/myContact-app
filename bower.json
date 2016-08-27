@@ -1,0 +1,27 @@
+{
+  "name": "Contacts-app",
+  "description": "contacts mean application",
+  "main": "server.js",
+  "authors": [
+    "Reena"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "contacts"
+  ],
+  "homepage": "https://github.com/reenakt/myContact-app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "^0.3.1"
+  }
+}

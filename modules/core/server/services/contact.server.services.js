@@ -1,8 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    
-    Contact = mongoose.model('rkcontacts');
+
+    Contact = mongoose.model('reenaContact');
 
 
 module.exports.saveContact = function(savableContact,callback){
@@ -21,18 +21,35 @@ module.exports.saveContact = function(savableContact,callback){
 // get all the contact
 
 module.exports.getContacts = function(callback){
-    Contact.find(function(err,contacts){
+
+    Contact.find({},{__v:0},function(err,contacts){
+
         if(err) throw err;
-            console.log(contacts);
-               callback(contacts);
+
+               callback(null,contacts);
     });
 }
 
+//get contact by id
+
+module.exports.getContactById = function(id,contact,callback){
+
+
+    Contact.findOne({'_id':id},function (err,contact) {
+        if(err)
+            callback(err);
+        else
+        callback(null,contact);
+    })
+}
+
+
 
 //find contact by id
+
 module.exports.findContactById = function (id,callback) {
 
-   Contact.findById(id, function(err, contact){
+   Contact.findOne({'_id':id}, function(err, contact){
 
        if(err) throw err;
 
@@ -51,14 +68,21 @@ module.exports.updateContact = function(id,updatedContact,callback){
 
 }
 
-module.exports.deleteContact = function(id,deletedContact,callback){
-    Contact.findByIdAndRemove(id,function(err){
-        if(err){
+module.exports.deleteContact = function(id,callback) {
+    Contact.findByIdAndRemove(id, function (err) {
+        if (err) {
             callback(err);
-        }
-        callback(deletedContact);
-        console.log('contact sucessfully deleted');
-    })
+        }else
+        Contact.find({}, {__v:0}, function(err, contact){
+                if(err) callback(err);
+                else callback(null, contact);
+
+            })
+
+
+
+    });
+
 }
     
     

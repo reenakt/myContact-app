@@ -1,0 +1,26 @@
+<div class="grid-contacts-container" ng-controller="ContactsCtrl">
+
+    <label>Search:<input ng-model="searchText">
+    </label>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th ng-repeat="field in fields" ng-bind="field |labelCase"></th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="contact in contacts |filter:searchText ">
+
+            <th  ng-repeat ="(key,value) in contact" ng-bind = "value"></th>
+
+            <td ng-click="updateContact(contact)"><span class="glyphicon glyphicon-pencil"></span> </td>
+            <td ng-click="delete(contact._id)"><span class="glyphicon glyphicon-trash"></span> </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    </div>

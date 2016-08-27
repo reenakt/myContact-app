@@ -46,14 +46,17 @@ var ContactsSchema = new Schema({
         default:'',
         validate:[validatePhoneStrategy,'phone number is invalid']
     },
-    city:{
-        type:String,
-        trim:true,
-        default:'',
-        uppercase:true,
-        validate:[validateFieldStrategy,'City can not be empty']
+    city: {
+        type: String,
+        trim: true,
+        default: '',
+        uppercase: true,
+        validate: [validateFieldStrategy, 'City can not be empty']
     }
-     
-    
+
+
 });
-  mongoose.model('rkcontacts',ContactsSchema);
+
+
+
+  mongoose.model('reenaContact',ContactsSchema);

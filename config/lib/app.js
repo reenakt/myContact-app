@@ -3,7 +3,11 @@
 var express = require('./express'),
      config = require('../config'),
       path =require('path'),
-      mongoose =require('./mongoose');
+
+    mongoose =require('./mongoose');
+
+
+
 
 module.exports.loadRoutes = function(app){
     var coreRoute = require(path.join(process.cwd(),'modules/core/server/routes/core.server.routes'));
@@ -21,8 +25,9 @@ module.exports.start = function () {
         //routes registration
         self.loadRoutes(app);
 
+
         app.listen(config.app.port, function () {
-            console.log("Contacts App server is running on " + config.app.port + '. . .');
+            console.log("Application is running on " + config.app.port + '. . .');
         });
     })
 }

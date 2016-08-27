@@ -6,6 +6,7 @@ module.exports = {
         options:{
             user:'',
             pass:''
-        }
+        },
+        sessionSecret:'davelopmentSessionSecret'
     }
 };

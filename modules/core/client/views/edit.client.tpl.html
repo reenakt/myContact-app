@@ -1,0 +1,41 @@
+<div class="contacts-form-container" ng-controller="updateCtrl"  >
+
+<form class="bs-example bs-example-form" data-example-id="input-group-sizing">
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" >FirstName</span>
+  <input type="text" class="form-control" placeholder="FirstName"  ng-model="contact.firstName">
+</div>
+
+<br>
+
+<div class="input-group">
+  <span class="input-group-addon" >LastName</span>
+  <input type="text" class="form-control" placeholder="LastName"  ng-model="contact.lastName">
+</div>
+
+<br>
+
+<div class="input-group input-group-sm">
+  <span class="input-group-addon">email</span>
+  <input type="text" class="form-control" placeholder="Email"  ng-model ="contact.email">
+</div>
+    <br>
+
+    <div class="input-group input-group-sm">
+  <span class="input-group-addon">phone</span>
+  <input type="text" class="form-control" placeholder="Phone"  ng-model ="contact.phone">
+</div>
+
+    <br>
+
+    <div class="input-group input-group-sm">
+  <span class="input-group-addon">city</span>
+  <input type="text" class="form-control" placeholder="City"  ng-model ="contact.city">
+</div>
+    <br>
+
+    <button type="button" class="btn btn-default" ng-click="update(contact)">Submit</button>
+
+    </form>
+    </div>

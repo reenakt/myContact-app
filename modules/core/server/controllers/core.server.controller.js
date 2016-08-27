@@ -6,19 +6,25 @@ var  contactService= require('../services/contact.server.services');
 // get all the contacts
 
 module.exports.getContacts = function(req,res){
-    contactService.getContacts(function(contacts){
-        res.status(200);
-        res.json(contacts);
+    contactService.getContacts(function(err,contacts){
+        if(err){
+            res
+                .status(400)
+                .send({message:"could not get the contact"})
+        }else {
+
+            res.status(200);
+            res.json(contacts);
+
+        }
     });
 }
+
+
 
 module.exports.createContact= function (req,res) {
     var contact = req.body;
 
-    if (!contact) {
-        res.status(400);
-        res.end("Invalid contact")
-    }
     contactService.saveContact(contact, function (err, contact) {
         if (err) {
             console.log("server controller:save contact error: ");
@@ -46,8 +52,8 @@ module.exports.validateContactIdAndForward= function(req,res,next,id){
     
     contactService.findContactById(id,function (err,foundContact){
         if(err){
-            next(err);
-        }else if(foundContact) {
+            next();
+        } else if(foundContact) {
             metadata.model = foundContact;
             next();
         }else{
@@ -75,13 +81,14 @@ module.exports.updateContact = function(req,res) {
 
      });
 }
+
 //to delete contact
 
 module.exports.deleteContact = function(req,res) {
-   var deletedContact =req.body;
+
     var id= req.metadata.contactId;
     
-     contactService.deleteContact(id, deletedContact,function(err,contact) {
+     contactService.deleteContact(id,function(err,contact) {
 
 
          if (err) {
@@ -89,10 +96,34 @@ module.exports.deleteContact = function(req,res) {
                  .send({message: "unable to delete contact "})
          } else {
              res.status(200)
-                 .json(deletedContact);
+                 .json(contact);
          }
      });
 }
+// get contact by id
+
+module.exports.getContactById = function(req,res){
+
+   var contact= req.body,
+       id = req.metadata.contactId;
+
+    contactService.getContactById(id,contact,function(err,contact){
+
+        if(err){
+            res.status(400)
+                .send({message:"unable to get contact"})
+        }else{
+            res.status(200)
+                .json(contact);
+        }
+
+
+    })
+
+
+}
+
+
 //query operation
 
 module.exports.getTopContacts = function(req,res){
